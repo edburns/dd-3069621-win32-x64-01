@@ -74,6 +74,15 @@ Describe 'Direct CLI execution' {
         $lines[0] | Should -BeExactly $Expected
     }
 
+    It 'writes exactly one Fibonacci result line when explicitly selected' {
+        $stdout = & pwsh -NoLogo -NoProfile -File $script:ScriptPath -N 6 -Operation fibonacci
+        $LASTEXITCODE | Should -Be 0
+
+        $lines = @($stdout)
+        $lines.Count | Should -Be 1
+        $lines[0] | Should -BeExactly 'Fibonacci(6) = 8'
+    }
+
     It 'writes exactly one factorial result line for N=<N>' -TestCases @(
         @{ N = 0; Expected = 'Factorial(0) = 1' }
         @{ N = 1; Expected = 'Factorial(1) = 1' }

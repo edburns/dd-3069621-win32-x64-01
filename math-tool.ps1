@@ -2,7 +2,10 @@
 param(
     [Parameter(Position = 0)]
     [ValidateRange(0, [int]::MaxValue)]
-    [int] $N = 0
+    [int] $N = 0,
+
+    [ValidateSet('fibonacci', 'factorial')]
+    [string] $Operation = 'fibonacci'
 )
 
 Set-StrictMode -Version Latest
@@ -27,6 +30,27 @@ function Get-Fibonacci {
     return $previous
 }
 
+function Get-Factorial {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory, Position = 0)]
+        [ValidateRange(0, [int]::MaxValue)]
+        [int] $N
+    )
+
+    $result = [bigint]::One
+    for ($i = 2; $i -le $N; $i++) {
+        $result *= $i
+    }
+
+    return $result
+}
+
 if ($MyInvocation.InvocationName -ne '.') {
-    Write-Output "Fibonacci($N) = $(Get-Fibonacci -N $N)"
+    if ($Operation -eq 'factorial') {
+        Write-Output "Factorial($N) = $(Get-Factorial -N $N)"
+    }
+    else {
+        Write-Output "Fibonacci($N) = $(Get-Fibonacci -N $N)"
+    }
 }
