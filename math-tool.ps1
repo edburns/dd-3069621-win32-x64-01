@@ -5,17 +5,17 @@ param(
 )
 
 function Get-Fibonacci {
-    [OutputType([long])]
+    [OutputType([System.Numerics.BigInteger])]
     param(
         [ValidateRange(0, [long]::MaxValue)]
         [long]$N
     )
 
-    [long]$current = 0
-    [long]$next = 1
+    [System.Numerics.BigInteger]$current = 0
+    [System.Numerics.BigInteger]$next = 1
 
     for ([long]$index = 0; $index -lt $N; $index++) {
-        [long]$sum = $current + $next
+        [System.Numerics.BigInteger]$sum = $current + $next
         $current = $next
         $next = $sum
     }

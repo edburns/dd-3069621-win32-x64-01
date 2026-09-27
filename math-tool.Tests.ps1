@@ -6,22 +6,29 @@ Describe 'Get-Fibonacci' {
     It 'returns numeric zero for 0' {
         $result = Get-Fibonacci -N 0
 
-        $result | Should -BeOfType ([long])
+        $result | Should -BeOfType ([System.Numerics.BigInteger])
         $result | Should -Be 0
     }
 
     It 'returns numeric one for 1' {
         $result = Get-Fibonacci -N 1
 
-        $result | Should -BeOfType ([long])
+        $result | Should -BeOfType ([System.Numerics.BigInteger])
         $result | Should -Be 1
     }
 
     It 'returns numeric five for 5' {
         $result = Get-Fibonacci -N 5
 
-        $result | Should -BeOfType ([long])
+        $result | Should -BeOfType ([System.Numerics.BigInteger])
         $result | Should -Be 5
+    }
+
+    It 'returns an exact numeric value beyond Int64 range' {
+        $result = Get-Fibonacci -N 93
+
+        $result | Should -BeOfType ([System.Numerics.BigInteger])
+        $result | Should -Be ([System.Numerics.BigInteger]::Parse('12200160415121876738'))
     }
 }
 
