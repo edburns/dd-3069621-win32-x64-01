@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "7d5f6443-a433-4ec4-b58e-42d3ce8ab438",
+  "campaignIssueNumber": 5,
+  "campaignShortname": "math-control",
+  "repository": "edburns/dd-3069621-win32-x64-01",
+  "baseBranch": "experiment/shepherd-control",
+  "lessonPropagation": "off",
+  "campaignMetadataDirectory": "5-math-control-remove-before-merge",
+  "lessonsFile": "campaign-lessons.md",
+  "createdBy": {
+    "shepherdTaskVersion": "1.0.5",
+    "stageOutcomeProtocolVersion": 1
+  },
+  "createdAt": "2026-09-27T13:49:01Z"
+}
