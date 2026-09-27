@@ -52,7 +52,7 @@ Describe 'Get-Factorial' {
     }
 
     It 'does not emit the direct-CLI result line when dot-sourced for factorial' {
-        $output = . $script:ScriptPath -Operation factorial
+        $output = . $script:ScriptPath -N 5 -Operation factorial
 
         $output | Should -BeNullOrEmpty
     }
