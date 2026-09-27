@@ -30,6 +30,10 @@ Describe 'Get-Fibonacci' {
         $result | Should -BeOfType ([System.Numerics.BigInteger])
         $result | Should -Be ([System.Numerics.BigInteger]::Parse('12200160415121876738'))
     }
+
+    It 'rejects fractional input before conversion' {
+        { Get-Fibonacci -N 1.5 } | Should -Throw
+    }
 }
 
 Describe 'math-tool CLI' {
@@ -50,5 +54,12 @@ Describe 'math-tool CLI' {
         $LASTEXITCODE | Should -Be 0
         $output | Should -HaveCount 1
         $output | Should -Be $Expected
+    }
+
+    It 'rejects fractional input before conversion' {
+        $output = & $pwshPath -NoLogo -NoProfile -File $scriptPath -N 1.5 2>&1
+
+        $LASTEXITCODE | Should -Not -Be 0
+        $output | Should -Not -BeNullOrEmpty
     }
 }
