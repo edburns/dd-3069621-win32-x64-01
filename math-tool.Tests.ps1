@@ -23,7 +23,7 @@ Describe 'Get-Fibonacci' {
         $output = Get-Fibonacci -N 6
 
         @($output).Count | Should -Be 1
-        $output | Should -BeOfType [long]
+        $output | Should -BeOfType [bigint]
     }
 
     It 'does not emit the direct-CLI result line when dot-sourced' {

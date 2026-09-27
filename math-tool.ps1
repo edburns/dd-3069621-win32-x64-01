@@ -16,8 +16,8 @@ function Get-Fibonacci {
         [int] $N
     )
 
-    $previous = [long] 0
-    $current = [long] 1
+    $previous = [bigint]::Zero
+    $current = [bigint]::One
     for ($i = 0; $i -lt $N; $i++) {
         $next = $previous + $current
         $previous = $current
