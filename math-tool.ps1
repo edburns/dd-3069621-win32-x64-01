@@ -80,6 +80,7 @@ function Get-Factorial {
 }
 
 function Invoke-MathOperation {
+    [OutputType([string])]
     param(
         [ValidateSet('fibonacci', 'factorial')]
         [string]$Operation = 'fibonacci',
