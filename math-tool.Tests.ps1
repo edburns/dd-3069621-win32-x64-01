@@ -33,6 +33,31 @@ Describe 'Get-Fibonacci' {
     }
 }
 
+Describe 'Get-Factorial' {
+    It 'returns <Expected> for N=<N>' -TestCases @(
+        @{ N = 0; Expected = 1 }
+        @{ N = 1; Expected = 1 }
+        @{ N = 5; Expected = 120 }
+    ) {
+        param($N, $Expected)
+
+        Get-Factorial -N $N | Should -Be $Expected
+    }
+
+    It 'returns a single numeric value without incidental output' {
+        $output = Get-Factorial -N 5
+
+        @($output).Count | Should -Be 1
+        $output | Should -BeOfType [bigint]
+    }
+
+    It 'does not emit the direct-CLI result line when dot-sourced for factorial' {
+        $output = . $script:ScriptPath -Operation factorial
+
+        $output | Should -BeNullOrEmpty
+    }
+}
+
 Describe 'Direct CLI execution' {
     It 'writes exactly one result line for N=<N>' -TestCases @(
         @{ N = 0; Expected = 'Fibonacci(0) = 0' }
@@ -42,6 +67,21 @@ Describe 'Direct CLI execution' {
         param($N, $Expected)
 
         $stdout = & pwsh -NoLogo -NoProfile -File $script:ScriptPath -N $N
+        $LASTEXITCODE | Should -Be 0
+
+        $lines = @($stdout)
+        $lines.Count | Should -Be 1
+        $lines[0] | Should -BeExactly $Expected
+    }
+
+    It 'writes exactly one factorial result line for N=<N>' -TestCases @(
+        @{ N = 0; Expected = 'Factorial(0) = 1' }
+        @{ N = 1; Expected = 'Factorial(1) = 1' }
+        @{ N = 5; Expected = 'Factorial(5) = 120' }
+    ) {
+        param($N, $Expected)
+
+        $stdout = & pwsh -NoLogo -NoProfile -File $script:ScriptPath -N $N -Operation factorial
         $LASTEXITCODE | Should -Be 0
 
         $lines = @($stdout)
