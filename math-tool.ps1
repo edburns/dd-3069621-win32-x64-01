@@ -2,12 +2,13 @@
 param(
     [ValidateScript({
         [long]$parsed = 0
-        [long]::TryParse(
+        $isInteger = [long]::TryParse(
             $_,
             [Globalization.NumberStyles]::None,
             [Globalization.CultureInfo]::InvariantCulture,
             [ref]$parsed
         )
+        $isInteger -and $parsed -ge 0
     })]
     [string]$N = '0'
 )
@@ -17,12 +18,13 @@ function Get-Fibonacci {
     param(
         [ValidateScript({
             [long]$parsed = 0
-            [long]::TryParse(
+            $isInteger = [long]::TryParse(
                 $_,
                 [Globalization.NumberStyles]::None,
                 [Globalization.CultureInfo]::InvariantCulture,
                 [ref]$parsed
             )
+            $isInteger -and $parsed -ge 0
         })]
         [string]$N = '0'
     )

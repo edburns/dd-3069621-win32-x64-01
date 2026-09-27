@@ -34,6 +34,10 @@ Describe 'Get-Fibonacci' {
     It 'rejects fractional input before conversion' {
         { Get-Fibonacci -N 1.5 } | Should -Throw
     }
+
+    It 'rejects negative input' {
+        { Get-Fibonacci -N -1 } | Should -Throw
+    }
 }
 
 Describe 'math-tool CLI' {
@@ -58,6 +62,13 @@ Describe 'math-tool CLI' {
 
     It 'rejects fractional input before conversion' {
         $output = & $pwshPath -NoLogo -NoProfile -File $scriptPath -N 1.5 2>&1
+
+        $LASTEXITCODE | Should -Not -Be 0
+        $output | Should -Not -BeNullOrEmpty
+    }
+
+    It 'rejects negative input' {
+        $output = & $pwshPath -NoLogo -NoProfile -File $scriptPath -N -1 2>&1
 
         $LASTEXITCODE | Should -Not -Be 0
         $output | Should -Not -BeNullOrEmpty
