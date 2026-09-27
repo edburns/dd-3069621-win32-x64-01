@@ -5,9 +5,6 @@ param(
     [int]$N
 )
 
-Set-StrictMode -Version Latest
-$ErrorActionPreference = 'Stop'
-
 function Get-Fibonacci {
     [CmdletBinding()]
     [OutputType([System.Numerics.BigInteger])]
@@ -28,6 +25,8 @@ function Get-Fibonacci {
 }
 
 if ($MyInvocation.InvocationName -ne '.') {
+    Set-StrictMode -Version Latest
+    $ErrorActionPreference = 'Stop'
     $value = Get-Fibonacci -N $N
     Write-Output "Fibonacci($N) = $value"
 }
