@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "repository": "edburns/dd-3069621-win32-x64-01",
+  "repositoryUrl": "https://github.com/edburns/dd-3069621-win32-x64-01",
+  "startedAt": "2026-09-27T16:13:43Z",
+  "completedAt": "2026-09-27T16:54:46Z",
+  "lessonPropagation": "off",
+  "baselineBranch": "experiment/shepherd-shared-baseline",
+  "baselineSha": "9e9a0bd8d6ebebba4aa21e93e6399cea64a1637d",
+  "target": "C:\\Users\\edburns\\workareas\\dd-3069621-win32-x64-01-shepherd-target",
+  "branch": "experiment/shepherd-control",
+  "worktree": "C:\\Users\\edburns\\workareas\\dd-3069621-win32-x64-01-shepherd-control",
+  "campaignDirectory": "C:\\Users\\edburns\\workareas\\dd-3069621-win32-x64-01-shepherd-control\\10-math-control-remove-before-merge",
+  "issues": [
+    11,
+    12
+  ],
+  "handoff": "C:\\Users\\edburns\\workareas\\dd-3069621-win32-x64-01-shepherd-control\\10-math-control-remove-before-merge\\prompts\\shepherd-task-20-20260927-1214\\shepherd-test-experiment-handoff.json",
+  "runDirectory": "C:\\Users\\edburns\\workareas\\dd-3069621-win32-x64-01-shepherd-control\\10-math-control-remove-before-merge\\shepherd-tasks-7b42b0d5-541a-46cb-ba67-1bbcb934ae8f-20260927-1216",
+  "postMortem": "C:\\Users\\edburns\\workareas\\dd-3069621-win32-x64-01-shepherd-control\\10-math-control-remove-before-merge\\shepherd-tasks-7b42b0d5-541a-46cb-ba67-1bbcb934ae8f-20260927-1216\\20260927-1251-post-mortem.md",
+  "lessons": "C:\\Users\\edburns\\workareas\\dd-3069621-win32-x64-01-shepherd-control\\10-math-control-remove-before-merge\\campaign-lessons.md"
+}
